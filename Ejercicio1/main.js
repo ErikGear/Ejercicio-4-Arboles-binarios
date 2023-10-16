@@ -83,6 +83,14 @@ class BinarySearchTree {
   }
 }
 
+function sonIdenticos(rootA, rootB){
+    if (rootA === null && rootB === null) {
+        return true;
+    }
+
+    return (rootA.data === rootB.data) && (sonIdenticos(rootA.left, rootB.left) && sonIdenticos(rootA.right, rootB.right)); 
+}
+
 const arbolA = new BinarySearchTree();
 arbolA.insertarNodo(10);
 arbolA.insertarNodo(2);
@@ -93,8 +101,14 @@ arbolA.insertarNodo(4);
 
 const arbolB = new BinarySearchTree();
 arbolB.insertarNodo(10);
-arbolB.insertarNodo(8);
-arbolB.insertarNodo(9);
+arbolB.insertarNodo(2);
+arbolB.insertarNodo(15);
 arbolB.insertarNodo(6);
-arbolB.insertarNodo(100);
-arbolB.insertarNodo(20);
+arbolB.insertarNodo(8);
+arbolB.insertarNodo(4);
+
+
+//comparando arboles
+
+let parentesco = sonIdenticos(arbolA.root, arbolB.root);
+console.log(`¿Existe paranteso?: ${parentesco}`);
